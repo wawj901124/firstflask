@@ -5,7 +5,8 @@
     <title>register</title>
 </head>
 <body>
-<form action="http://127.0.0.1:5000/result" method="post">   <!--action,提交表单访问的路径-->
+<!--使用url_for('myresult'),等于'/result',使用url_for自动调用函数myresult中的路径设置-->
+<form action="{{ url_for('myresult') }}" method="post">   <!--action,提交表单访问的路径-->
     <p>姓名：<input type="text" name="姓名"></p>
     <p>年龄：<input type="text" name="年龄"></p>
     <p>性别：<input type="text" name="性别"></p>
