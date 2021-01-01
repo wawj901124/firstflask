@@ -49,9 +49,12 @@ def index2():
 #动态展示网页，向页面传递一些变量
 @app.route('/indexthree')
 def index3():
-    mytime = datetime.date.today()  #今天的日期
+    mytime = datetime.date.today()  #今天的日期  #普通变量
+    name_list = ['小明','小白','小黄']    #列表类型变量
     return render_template('indexthree.html',
-                           var=mytime)   #变量var，变量值为mytime,var在页面用
+                           var=mytime,#变量var，变量值为mytime,var在页面用
+                           namelist = name_list,  #变量namelist，值为name_list的内容
+                           )
 
 
 
