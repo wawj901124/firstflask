@@ -1,4 +1,5 @@
 from flask import Flask   #导入FLask类
+from flask import render_template   #导入render_template，叫渲染模板，帮助把想要的渲染文件给展示出来
 
 #Flask类接收一个参数__name__
 app = Flask(__name__)   #初始化了一个对象，叫app
@@ -35,6 +36,13 @@ def welcome3(floatparam):
 
 #路由路径不能重复，用户通过唯一路径访问特定的函数
 #参数类型不一样，也算是不同路径
+
+
+#使用render_template展示内容
+#返回给用户渲染后的网页文件
+@app.route('/indextwo')
+def index2():
+    return render_template('indextwo.html')  #返回一个渲染模板，帮你检查这个indextwo.html文件中有没有jinja2可以识别的符号，有就将其转为html文件
 
 
 #Flask应用程序实例的run方法启动web服务器
