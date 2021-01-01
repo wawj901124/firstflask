@@ -1,5 +1,6 @@
 from flask import Flask   #导入FLask类
 from flask import render_template   #导入render_template，叫渲染模板，帮助把想要的渲染文件给展示出来
+from flask import request  #导入request
 import datetime  #引入日期时间包
 
 #Flask类接收一个参数__name__
@@ -59,6 +60,18 @@ def index3():
                            )
 
 #如何进行表单提交
+#表单提交
+@app.route('/test/register')
+def myregister():
+    return render_template('test/register.html')
+
+#表单提交后的结果
+#接收表单提交的路由，需要制定methods为post
+@app.route('/result',methods=['POST','GET'])   #methods=['POST','GET']，表示允许接收post和get请求，不写时，默认只能接收get请求
+def myresult():
+    if request.method == 'POST': #如果是post请求，返回提交的内容
+        result_dict = request.form   #表单中input的name的值就是这个字段的键
+        return render_template('test/result.html',resultdict=result_dict)
 
 
 
