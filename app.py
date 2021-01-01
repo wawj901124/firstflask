@@ -1,5 +1,6 @@
 from flask import Flask   #导入FLask类
 from flask import render_template   #导入render_template，叫渲染模板，帮助把想要的渲染文件给展示出来
+import datetime  #引入日期时间包
 
 #Flask类接收一个参数__name__
 app = Flask(__name__)   #初始化了一个对象，叫app
@@ -43,6 +44,15 @@ def welcome3(floatparam):
 @app.route('/indextwo')
 def index2():
     return render_template('indextwo.html')  #返回一个渲染模板，帮你检查这个indextwo.html文件中有没有jinja2可以识别的符号，有就将其转为html文件
+
+
+#动态展示网页，向页面传递一些变量
+@app.route('/indexthree')
+def index3():
+    mytime = datetime.date.today()  #今天的日期
+    return render_template('indexthree.html',
+                           var=mytime)   #变量var，变量值为mytime,var在页面用
+
 
 
 #Flask应用程序实例的run方法启动web服务器
