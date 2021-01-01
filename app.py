@@ -51,10 +51,14 @@ def index2():
 def index3():
     mytime = datetime.date.today()  #今天的日期  #普通变量
     name_list = ['小明','小白','小黄']    #列表类型变量
+    task_dict ={'任务':'打扫卫生','时间':'3小时'}    #字典类型变量
     return render_template('indexthree.html',
                            var=mytime,#变量var，变量值为mytime,var在页面用
                            namelist = name_list,  #变量namelist，值为name_list的内容
+                           taskdict = task_dict, #变量taskdict,值为tast_dict
                            )
+
+#如何进行表单提交
 
 
 
