@@ -1,0 +1,35 @@
+1.运行git-cmd.exe;
+
+2.d:
+
+  cd  工程路径
+
+3.执行命令：git remote set-url origin https://github.com/wawj901124/jmeter.git
+
+
+
+	其中https://github.com/wawj901124/jmeter.git 是github工程路径
+
+
+
+
+
+
+
+还有一种方法就是:
+
+
+
+1.新建一个工程项目；
+
+2.然后在项目中点击git(输入github地址和本地工程路径（新工程）)，点击clone；
+
+3.再打开克隆的项目就可以了
+
+
+
+
+
+本地更新而未检测到更新
+
+需要在setting中版本控制中加一下本地工程路径即可
