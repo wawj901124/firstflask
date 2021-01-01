@@ -11,7 +11,7 @@
     <!--使用大括号百分号访问for语句,使用endfor结束循环-->
     <!--使用双大括号打印变量nameone-->
     <ul>
-    {% for nameone in namelist %}
+    {% for nameone in namelist %}  <!--用大括号和百分号括起来的是控制结构，还有if-->
         <li>{{ nameone }}</li>
     {% endfor %}
     </ul>
