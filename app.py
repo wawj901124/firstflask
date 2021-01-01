@@ -34,6 +34,7 @@ def welcome3(floatparam):
     return '您好,%f' % floatparam+'钱'
 
 #路由路径不能重复，用户通过唯一路径访问特定的函数
+#参数类型不一样，也算是不同路径
 
 
 #Flask应用程序实例的run方法启动web服务器
