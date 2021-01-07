@@ -50,7 +50,45 @@ def movie():  #函数的名字可以随便起，只要符合python函数的命�
 #评分
 @app.route('/score')
 def score():  #函数的名字可以随便起，只要符合python函数的命名规则就行
-    return render_template('score.html')
+    score_list = []  #分数列表
+    num_list = []   #每个分数对应的电影的个数
+    # con = sqlite3.connect('movie.db')  #连接数据库
+    # cur = con.cursor()  #游标
+    # sql = 'select score,count(score) from movie250 group by score'  #数据库查询语句查询分数字段score,以及某个分数的个数，使用count(score),并且按照分数来分组
+    # data = cur.execute(sql=sql)  #执行查询语句，得出查询后的结果
+    # for item in data:
+    #     score_list.append(item[0])   #如果不保存在本地变量中，查询出的数据会随着游标关闭和数据库连接关闭而消失，无法访问
+    #     score_list.append(item[1])
+    # cur.close()  #关闭游标
+    # con.close()  #关闭数据库连接
+
+    # 此处没有数据库，用固定数据代替
+    data = [
+        ['8.3','1'],
+        ['8.4', '6'],
+        ['8.5', '14'],
+        ['8.6', '28'],
+        ['8.7', '39'],
+        ['8.8', '44'],
+        ['8.9', '30'],
+        ['9', '22'],
+        ['9.1', '19'],
+        ['9.2', '22'],
+        ['9.3', '14'],
+        ['9.4', '4'],
+        ['9.5', '4'],
+        ['9.6', '2'],
+        ['9.7', '1']
+    ]
+
+    for item in data:
+        score_list.append(item[0])
+        num_list.append(item[1])
+    print(score_list)
+    print(num_list)
+    return render_template('score.html',
+                           scorelist=score_list,
+                           numlist=num_list)
 
 
 #词云
