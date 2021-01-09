@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/movie.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="job.db" uuid="37ab0aeb-1331-474e-8988-f2b13e0809e9">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\PycharmProjects\firstflask\job.db</jdbc-url>
+    </data-source>
   </component>
 </project>
