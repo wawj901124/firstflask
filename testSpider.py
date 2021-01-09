@@ -51,9 +51,22 @@ def saveData(datalist,dbpath):
         cur.close()  #关闭游标
         conn.close() #关闭数据库连接
 
+
+from bs4 import BeautifulSoup  #网页解析，获取数据
+import re #正则表达式，进行文字匹配
+import urllib,request,urllib.error  #制定url,获取网页数据
+import xlwt  #进行excel操作
+
 #主流程
 def main():
-    create_db(dbpath) #初始化数据库
+    baseurl = "https://movie.douban.com/top250?start="
+    #1.爬取网页
+    datalist = getData(baseurl)
+    # create_db(dbpath) #初始化数据库
+    dbpath = "movie.db"
+    #3.保存数据
+    #saveData(datalist,dbpath)
+    saveData2DB(datalist,dbpath)
     jobURLs = getURLs(pagenum)
     for url in jobURLs:
         getData(url)
@@ -61,6 +74,25 @@ def main():
     #将爬取到的数据保存到数据库
     print(datalist)
     saveData()
+
+
+#爬取网页
+def getData(baseurl):
+    datalist = []
+    for i in range(0,1):  #调用获取页面信息的函数，10次
+        url = baseurl+str(i*25)
+        html = askURL(url)  #保存获取到的网页源码
+
+        #2.逐一解析数据
+        soup = BeautifulSoup(html,"html.parser")
+        for item in soup.find_all('div',class_="item"):
+            pass
+
+    return  datalist
+
+#得到指定一个url的网页内容
+def askURL(url):
+    pass
 
 
 
