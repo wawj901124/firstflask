@@ -56,24 +56,31 @@ from bs4 import BeautifulSoup  #网页解析，获取数据
 import re #正则表达式，进行文字匹配
 import urllib,request,urllib.error  #制定url,获取网页数据
 import xlwt  #进行excel操作
+from urllib import parse  #parse,解析
+
+
+KW = input("请输入您要搜索的岗位关键字：")
+keyword = parse.quote(parse.quote(KW) ) #将汉字解析为url中的内容
+
 
 #主流程
 def main():
-    baseurl = "https://movie.douban.com/top250?start="
-    #1.爬取网页
-    datalist = getData(baseurl)
-    # create_db(dbpath) #初始化数据库
-    dbpath = "movie.db"
-    #3.保存数据
-    #saveData(datalist,dbpath)
-    saveData2DB(datalist,dbpath)
-    jobURLs = getURLs(pagenum)
-    for url in jobURLs:
-        getData(url)
-
-    #将爬取到的数据保存到数据库
-    print(datalist)
-    saveData()
+    url = "https://search.51job.com/list/090200,000000,0000,00,9,99,"+keyword+",2,1.html"
+    print(url)
+    # #1.爬取网页
+    # datalist = getData(baseurl)
+    # # create_db(dbpath) #初始化数据库
+    # dbpath = "movie.db"
+    # #3.保存数据
+    # #saveData(datalist,dbpath)
+    # saveData2DB(datalist,dbpath)
+    # jobURLs = getURLs(pagenum)
+    # for url in jobURLs:
+    #     getData(url)
+    #
+    # #将爬取到的数据保存到数据库
+    # print(datalist)
+    # saveData()
 
 
 #爬取网页
@@ -96,5 +103,5 @@ def askURL(url):
 
 
 
-if __name__ ="__main__":
+if __name__ =="__main__":
     main()
