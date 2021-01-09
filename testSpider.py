@@ -61,11 +61,11 @@ from urllib import parse  #parse,解析
 
 KW = input("请输入您要搜索的岗位关键字：")
 keyword = parse.quote(parse.quote(KW) ) #将汉字解析为url中的内容
-
+pageNum = 1
 
 #主流程
 def main():
-    url = "https://search.51job.com/list/090200,000000,0000,00,9,99,"+keyword+",2,1.html"
+    url = "https://search.51job.com/list/090200,000000,0000,00,9,99,"+keyword+",2,"+str(pageNum)+".html"
     print(url)
     # #1.爬取网页
     # datalist = getData(baseurl)
