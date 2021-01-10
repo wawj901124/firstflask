@@ -45,6 +45,7 @@
                 {% endif %}
             </h1>
         </div>
+        {{ wtf.quick_form(form) }}   <!--使用wtf中的quick_form函数加载表单-->
     </div>
-    {{ wtf.quick_form(form) }}   <!--使用wtf中的quick_form函数加载表单-->
+    
 {% endblock %}
