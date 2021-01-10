@@ -4,7 +4,7 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))   #当前文件的路径
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')+'/test.db'    #配置数据库路径
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')    #配置连接什么类型的数据库
 
 # 动态追踪修改设置，如未设置只会提示警告
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -13,18 +13,35 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db =SQLAlchemy(app)   #实例化数据库实例
 
+
+#建表
+class Role(db.Model):
+    __tablename__ = 'roles'   #表名
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True)
+    users = db.relationship('User',backref='role')   #关系表，反向索引role ,创建一对多的一的那端
+
+    def __repr__(self):
+        return '<Role %r>' % self.name
+
+
 #建表
 class User(db.Model):
+    __tablename__ = 'users'   #表名
+
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
+    username = db.Column(db.String(64), unique=True,index=True)
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))  #一对多的多的那端， 外键，外键为表的id,即roles.id
     email = db.Column(db.String(120), unique=True)
 
-    def __init__(self, username, email):
-        self.username = username
-        self.email = email
+    # def __init__(self, username, email):
+    #     self.username = username
+    #     self.email = email
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+db.create_all()   #创建数据库
 
 # #db配置与说明
 # 名字	                                        备注
@@ -70,3 +87,10 @@ class User(db.Model):
 # order_by	                       指定关系中记录的排序方式
 # secondary	                       指定多对多关系中关系表的名字
 # secondary join	                   在SQLAlchemy中无法自行决定时，指定多对多关系中的二级联结条件
+
+# #FLask-SQLALchemy数据库URL
+# 数据库引擎                                          URL
+# Postgres                                          postgresql://scott:tiger@localhost/mydatabase
+# MySQL                                             mysql://scott:tiger@localhost/mydatabase
+# Oracle                                            oracle://scott:tiger@127.0.0.1:1521/sidname
+# SQLite （注意开头的四个斜线）                         sqlite:////absolute/path/to/foo.db
