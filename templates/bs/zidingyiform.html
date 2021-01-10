@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="POST">
+        {{ form.hidden_tag() }}  <!--form.hidden_tag()为scrftoken-->
+        {{ form.name.label }} {{ form.name(id='my-text-field') }}
+        <!--form.name.label 为表单的标签名-->
+        <!--form.name为表单的字段名-->
+        {{ form.submit() }}
+        <!--form.submit() 为表单的提交按钮-->
+
+    </form>
+
+</body>
+</html>
