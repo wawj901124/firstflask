@@ -1,9 +1,11 @@
 from flask import Flask   #导入FLask类
 from flask import render_template   #导入render_template，叫渲染模板，帮助把想要的渲染文件给展示出来
 from flask_bootstrap import Bootstrap  #导入Bootstrap
+from testbootstrap.myform import NameForm
 
 #Flask类接收一个参数__name__
 app = Flask(__name__)   #初始化了一个对象，叫app
+app.config['SECRET_KEY'] = 'hard to guess string'    #设置scrftoken
 bootstrap = Bootstrap(app)   #初始化flask_bootstrap
 
 
@@ -23,8 +25,9 @@ def index():  #函数的名字可以随便起，只要符合python函数的命�
     if form.validate_on_submit():  #表单提交有效
         name = form.name.data   #将表单内容复制给变量name
         form.name.data = ''  #置空表单内容
-    return render_template('bs/user.html',
-                           name=name
+    return render_template('bs/index.html',
+                           name=name,
+                           form = form
                            )
 
 
