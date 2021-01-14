@@ -142,7 +142,7 @@ class ReadData:
 
 if __name__ == "__main__":
     pass
-    file_name = r"D:\pycharmproject\firstflask\importexcel\chandao\excelbiaodata\七合一 Mate30E pro -未关闭Bug.xls"
+    file_name = r"D:\pycharmproject\firstflask\importexcel\chandao\excelbiaodata\Bug.xls"
     sheet_id = 0
 
     test_project = "M项目专用终端定制测试bug"
