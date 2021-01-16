@@ -1,4 +1,4 @@
-from handleexcel.operation_excel import OperationExcel
+from util.handle_excel.operation_excel import OperationExcel
 
 class CreateExcelFile:
     def __init__(self,file_name,sheet_id):
@@ -9,7 +9,7 @@ class CreateExcelFile:
     def create_get_exceldata_file(self):
         excel_lie_shu = self.oe.get_lies()
         file_name = "create_get_exceldata"
-        mycontent_base = """from handleexcel.operation_excel import OperationExcel   #导入OperationExcel
+        mycontent_base = """from util.handle_excel.operation_excel import OperationExcel   #导入OperationExcel
 
 class GetData:
     def __init__(self,file_name=None,sheet_id=None):
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     def create_return_exceldata_file(self):
         excel_lie_shu = self.oe.get_lies()
         file_name = "create_return_exceldata"
-        mycontent_base = """from handleexcel.create_get_exceldata import GetData
+        mycontent_base = """from util.handle_excel.create_get_exceldata import GetData
 
 
 #对数据遍历入库
@@ -165,7 +165,7 @@ if __name__ == "__main__":
 
 if __name__ == "__main__":
 
-    file_name = r"D:\pycharmproject\firstflask\handleexcel\七合一 Mate30E pro -用例.xls"
+    file_name = r"D:\PycharmProjects\firstflask\util\handle_excel\exceldata\dataresult.xls"
     sheet_id = 0
     cef = CreateExcelFile(file_name=file_name,sheet_id=sheet_id)
     # cef.create_get_exceldata_file()

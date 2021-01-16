@@ -4,8 +4,8 @@ from flask import request  #导入request
 import datetime  #引入日期时间包
 import sqlite3   #引入sllite3数据库
 
-from handleexcel.make_file import CreateExcelFile
-from util.static_list import StaticList
+from util.handle_excel.make_file import CreateExcelFile
+from util.handle_excel.static_list import StaticList
 
 #Flask类接收一个参数__name__
 app = Flask(__name__)   #初始化了一个对象，叫app
@@ -26,7 +26,7 @@ class GeTDataFromExcel:
 
         test_project = "M项目专用终端定制测试bug"
         test_module = "分组数据加密通信"
-        from handleexcel.create_return_exceldata import ReadData
+        from util.handle_excel.create_return_exceldata import ReadData
         readdata = ReadData(file_name=file_name,sheet_id=sheet_id,test_project=test_project,test_module=test_module)  #实例化
         return readdata
 
@@ -61,7 +61,7 @@ def index():  #函数的名字可以随便起，只要符合python函数的命�
 @app.route('/<int:numid>')
 def static_base(numid):  #函数的名字可以随便起，只要符合python函数的命名规则就行
     # file_name = r"D:\pycharmproject\firstflask\importexcel\chandao\excelbiaodata\七合一 Mate30E pro -未关闭Bug.xls"
-    file_name = r"D:\pycharmproject\firstflask\handleexcel\excelfile\七合一 Mate30E pro -所有用例.xls"
+    file_name = r"D:\PycharmProjects\firstflask\util\handle_excel\exceldata\dataresult.xls"
     sheet_id = 0
 
     gdfe = GeTDataFromExcel(file_name=file_name,sheet_id=sheet_id)
@@ -78,7 +78,7 @@ def static_base(numid):  #函数的名字可以随便起，只要符合python函
 
     print(score_list)
     print(num_list)
-    return render_template('chandao/staticbase.html',
+    return render_template('mychar/staticbasetwo.html',
                            scorelist=score_list,
                            numlist=num_list,
                            titlename = title_name,
