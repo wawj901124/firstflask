@@ -80,6 +80,21 @@ def static_base_three(zhunumid,funumid):  #函数的名字可以随便起，只�
     pre_name_list = gdfe.get_title()   #获取标题所有内容
     print("pre_name_list:")
     print(pre_name_list)
+    import itertools
+    per_name_list_liangliang_zuhe = list(itertools.permutations(pre_name_list, 2))   #两个元素组合
+    print("per_name_list_liangliang_zuhe:")
+    print(per_name_list_liangliang_zuhe)
+    per_name_list_liangliang_zuhe_index_list = []
+    per_name_list_liangliang_zuhe_len = len(per_name_list_liangliang_zuhe)
+    per_name_list_liangliang_zuhe_len_list = []
+    for i in range(0,per_name_list_liangliang_zuhe_len):
+        pre_one_xiang_list = []
+        pre_one_xiang_list.append(pre_name_list.index(per_name_list_liangliang_zuhe[i][0]))
+        pre_one_xiang_list.append(pre_name_list.index(per_name_list_liangliang_zuhe[i][1]))
+        per_name_list_liangliang_zuhe_index_list.append(pre_one_xiang_list)
+        per_name_list_liangliang_zuhe_len_list.append(i)
+    print('per_name_list_liangliang_zuhe_index_list:')
+    print(per_name_list_liangliang_zuhe_index_list)
     # pre_name_list = ['Bug编号', '所属产品', '所属模块', '所属项目', '相关研发内部优化改进的需求', '相关任务', 'Bug标题', '关键词', '严重程度', '优先级', 'Bug类型', '操作系统', '浏览器', '重现步骤', 'Bug状态', '截止日期', '激活次数', '是否确认', '抄送给', '由谁创建', '创建日期', '影响版本', '指派给', '指派日期', '解决者', '解决方案', '解决版本', '解决日期', '由谁关闭', '关闭日期', '重复ID', '相关Bug', '相关用例', '最后修改者', '修改日期', '子状态', '附件']
     zhu_lie_num = int(zhunumid)
     print(zhu_lie_num)
@@ -172,7 +187,10 @@ def static_base_three(zhunumid,funumid):  #函数的名字可以随便起，只�
                            encode_value = encode_value,
                            series_type_dict_list = series_type_dict_list,
                            hengzhou_name_list = hengzhou_name_list,
-                           zongzhou_name_list = zongzhou_name_list
+                           zongzhou_name_list = zongzhou_name_list,
+                           per_name_list_liangliang_zuhe = per_name_list_liangliang_zuhe,
+                           per_name_list_liangliang_zuhe_index_list = per_name_list_liangliang_zuhe_index_list,
+                           per_name_list_liangliang_zuhe_len_list = per_name_list_liangliang_zuhe_len_list
 
                            )
 

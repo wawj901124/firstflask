@@ -56,8 +56,8 @@
 
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
-            {% for one in pre_name_list %}
-                 <li><a href="/{{ pre_name_list.index(one) }}">{{ one }}</a></li>
+            {% for one in per_name_list_liangliang_zuhe_len_list %}
+                 <li><a href="/{{ per_name_list_liangliang_zuhe_index_list[one][0]}}_{{ per_name_list_liangliang_zuhe_index_list[one][1]}}">{{ per_name_list_liangliang_zuhe[one][0] }}_{{ per_name_list_liangliang_zuhe[one][1] }}</a></li>
             {% endfor %}
 {#          <li class="active"><a href="/staticbase/1">所属模块<i class="la la-angle-down"></i></a></li>#}
 {#          <li><a href="/0">Bug编号</a></li>#}
