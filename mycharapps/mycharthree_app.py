@@ -66,18 +66,20 @@ class GeTDataFromExcel:
 #首页
 @app.route('/')
 def index():  #函数的名字可以随便起，只要符合python函数的命名规则就行\
-    return static_base(0,3)
+    return static_base_three(3,0)
 
 
 #统计
-@app.route('/<int:zhunumid>/<int:funumid>')
-def static_base(zhunumid,funumid):  #函数的名字可以随便起，只要符合python函数的命名规则就行
+@app.route('/<int:zhunumid>_<int:funumid>')
+def static_base_three(zhunumid,funumid):  #函数的名字可以随便起，只要符合python函数的命名规则就行
     # file_name = r"D:\pycharmproject\firstflask\importexcel\chandao\excelbiaodata\七合一 Mate30E pro -未关闭Bug.xls"
     file_name = r"D:\PycharmProjects\firstflask\util\handle_excel\exceldata\dataresult.xls"
     sheet_id = 0
 
     gdfe = GeTDataFromExcel(file_name=file_name,sheet_id=sheet_id)
     pre_name_list = gdfe.get_title()   #获取标题所有内容
+    print("pre_name_list:")
+    print(pre_name_list)
     # pre_name_list = ['Bug编号', '所属产品', '所属模块', '所属项目', '相关研发内部优化改进的需求', '相关任务', 'Bug标题', '关键词', '严重程度', '优先级', 'Bug类型', '操作系统', '浏览器', '重现步骤', 'Bug状态', '截止日期', '激活次数', '是否确认', '抄送给', '由谁创建', '创建日期', '影响版本', '指派给', '指派日期', '解决者', '解决方案', '解决版本', '解决日期', '由谁关闭', '关闭日期', '重复ID', '相关Bug', '相关用例', '最后修改者', '修改日期', '子状态', '附件']
     zhu_lie_num = int(zhunumid)
     print(zhu_lie_num)
@@ -95,15 +97,19 @@ def static_base(zhunumid,funumid):  #函数的名字可以随便起，只要符�
     print(zhu_lie_title_name)
     print(" mubiao_list_all:")
     print( mubiao_list_all)
+    hengzhou_name_list = mubiao_list_all[0]   #横轴标题内容
+    zongzhou_name_list = mubiao_list_all[1]  #纵轴标题内容
+
+    #计数data（即Y轴标题）: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
+    #x轴data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 
     # #生成source数据
     # source: [
-    #                         ['result', '2012', '2013', '2014', '2015', '2016', '2017'],
-    #                         ['pass', 411.1, 30.4, 65.1, 53.3, 83.8, 98.7],
-    #                         ['fail', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-    #                         ['block', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
-    #                         ['no run', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
-    #                     ]
+    #     ['titte', '北京', '南京', '河北', '保定', '太原'],
+    #     [['相同'], [4, 1, 5, 6, 2]],
+    #     [['未知'], [8, 1, 4, 7, 2]],
+    #     [['不同'], [5, 5, 6, 1, 1]]
+    # ]
     source_list = []
     source_one_hang_list = []   #source第一行数据
     source_one_hang_list.append(zhu_lie_title_name)
@@ -115,7 +121,7 @@ def static_base(zhunumid,funumid):  #函数的名字可以随便起，只要符�
     source_list.append(source_one_hang_list)
 
     #source第一行数据后几行数据
-    source_houjihang_hang_shu = len(mubiao_list_all[0])   #横轴名字内容
+    source_houjihang_hang_shu = len(mubiao_list_all[0])
     print("source_houjihang_hang_shu:")
     print(source_houjihang_hang_shu)
     source_houjihang_yi_lie_shu = len(mubiao_list_all[1])
@@ -125,12 +131,16 @@ def static_base(zhunumid,funumid):  #函数的名字可以随便起，只要符�
 
     for weidu_num in range(0,source_houjihang_yi_lie_shu):
         weidu_one_list = []
+        weidu_one_name_list = []
+        weidu_one_data_list = []
 
-        weidu_one_list.append(mubiao_list_all[1][weidu_num])  #维度第一列数据
-        #维度第二列至最后的数据
+        weidu_one_name_list.append(mubiao_list_all[1][weidu_num])  #维度一条数据的第一个列表数据，记录名字
+        #维度第二个列表的数据
         for hang_shu in range(0,source_houjihang_hang_shu):
-            weidu_one_list.append(mubiao_list_all[hang_shu+2][weidu_num])
+            weidu_one_data_list.append(mubiao_list_all[hang_shu+2][weidu_num])  #维度一条数据的第二个列表数据，记录数据
 
+        weidu_one_list.append(weidu_one_name_list)
+        weidu_one_list.append(weidu_one_data_list)
 
         print("weidu_one_list:")
         print(weidu_one_list)
@@ -144,21 +154,26 @@ def static_base(zhunumid,funumid):  #函数的名字可以随便起，只要符�
     print(encode_value)
 
     series_type_dict_list = []
-    for i in range(0,source_houjihang_hang_shu):
-        series_type_dict_list.append(i)
+    source_list_len = len(source_list)
+
+    for i in range(1,source_list_len):
+        series_type_dict_list.append(source_list[i])
 
     print('series_type_dict_list')
     print(series_type_dict_list)
 
 
 
-    return render_template('mychar/staticbasetwo.html',
+    return render_template('mychar/staticbasethree.html',
                            titlename = zhu_lie_title_name,
                            pre_name_list = pre_name_list,
                            source_list = source_list,
                            item_name = zhu_lie_title_name,
                            encode_value = encode_value,
-                           series_type_dict_list = series_type_dict_list
+                           series_type_dict_list = series_type_dict_list,
+                           hengzhou_name_list = hengzhou_name_list,
+                           zongzhou_name_list = zongzhou_name_list
+
                            )
 
 
