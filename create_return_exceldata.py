@@ -28,6 +28,20 @@ class ReadData:
             excel_2 = self.exceldata.get_excel_2(i)
                         
             excel_3 = self.exceldata.get_excel_3(i)
+                        
+            excel_4 = self.exceldata.get_excel_4(i)
+                        
+            excel_5 = self.exceldata.get_excel_5(i)
+                        
+            excel_6 = self.exceldata.get_excel_6(i)
+                        
+            excel_7 = self.exceldata.get_excel_7(i)
+                        
+            excel_8 = self.exceldata.get_excel_8(i)
+                        
+            excel_9 = self.exceldata.get_excel_9(i)
+                        
+            excel_10 = self.exceldata.get_excel_10(i)
             
             if str(excel_0).strip() == '':
                 title_list.append('')
@@ -49,6 +63,41 @@ class ReadData:
             else:
                 title_list.append(str(excel_3).strip())
             
+            if str(excel_4).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_4).strip())
+            
+            if str(excel_5).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_5).strip())
+            
+            if str(excel_6).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_6).strip())
+            
+            if str(excel_7).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_7).strip())
+            
+            if str(excel_8).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_8).strip())
+            
+            if str(excel_9).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_9).strip())
+            
+            if str(excel_10).strip() == '':
+                title_list.append('')
+            else:
+                title_list.append(str(excel_10).strip())
+            
         print(title_list)
         return title_list
         
@@ -61,6 +110,20 @@ class ReadData:
         excel_2_list = [] 
                         
         excel_3_list = [] 
+                        
+        excel_4_list = [] 
+                        
+        excel_5_list = [] 
+                        
+        excel_6_list = [] 
+                        
+        excel_7_list = [] 
+                        
+        excel_8_list = [] 
+                        
+        excel_9_list = [] 
+                        
+        excel_10_list = [] 
             
         all_list = []
         rows_count = self.exceldata.get_case_lines()   #获取表的行数
@@ -73,6 +136,20 @@ class ReadData:
             excel_2 = self.exceldata.get_excel_2(i)
                         
             excel_3 = self.exceldata.get_excel_3(i)
+                        
+            excel_4 = self.exceldata.get_excel_4(i)
+                        
+            excel_5 = self.exceldata.get_excel_5(i)
+                        
+            excel_6 = self.exceldata.get_excel_6(i)
+                        
+            excel_7 = self.exceldata.get_excel_7(i)
+                        
+            excel_8 = self.exceldata.get_excel_8(i)
+                        
+            excel_9 = self.exceldata.get_excel_9(i)
+                        
+            excel_10 = self.exceldata.get_excel_10(i)
                         
             if str(excel_0).strip()=='':
                 excel_0_list.append('')
@@ -93,6 +170,41 @@ class ReadData:
                 excel_3_list.append('')
             else:
                 excel_3_list.append(str(excel_3).strip())
+                        
+            if str(excel_4).strip()=='':
+                excel_4_list.append('')
+            else:
+                excel_4_list.append(str(excel_4).strip())
+                        
+            if str(excel_5).strip()=='':
+                excel_5_list.append('')
+            else:
+                excel_5_list.append(str(excel_5).strip())
+                        
+            if str(excel_6).strip()=='':
+                excel_6_list.append('')
+            else:
+                excel_6_list.append(str(excel_6).strip())
+                        
+            if str(excel_7).strip()=='':
+                excel_7_list.append('')
+            else:
+                excel_7_list.append(str(excel_7).strip())
+                        
+            if str(excel_8).strip()=='':
+                excel_8_list.append('')
+            else:
+                excel_8_list.append(str(excel_8).strip())
+                        
+            if str(excel_9).strip()=='':
+                excel_9_list.append('')
+            else:
+                excel_9_list.append(str(excel_9).strip())
+                        
+            if str(excel_10).strip()=='':
+                excel_10_list.append('')
+            else:
+                excel_10_list.append(str(excel_10).strip())
             
         all_list.append(excel_0_list)
             
@@ -101,6 +213,20 @@ class ReadData:
         all_list.append(excel_2_list)
             
         all_list.append(excel_3_list)
+            
+        all_list.append(excel_4_list)
+            
+        all_list.append(excel_5_list)
+            
+        all_list.append(excel_6_list)
+            
+        all_list.append(excel_7_list)
+            
+        all_list.append(excel_8_list)
+            
+        all_list.append(excel_9_list)
+            
+        all_list.append(excel_10_list)
             
         print('all_list')
         for one_list in all_list:

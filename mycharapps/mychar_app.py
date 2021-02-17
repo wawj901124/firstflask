@@ -61,7 +61,7 @@ def index():  #函数的名字可以随便起，只要符合python函数的命�
 @app.route('/<int:numid>')
 def static_base(numid):  #函数的名字可以随便起，只要符合python函数的命名规则就行
     # file_name = r"D:\pycharmproject\firstflask\importexcel\chandao\excelbiaodata\七合一 Mate30E pro -未关闭Bug.xls"
-    file_name = r"D:\PycharmProjects\firstflask\util\handle_excel\exceldata\dataresult.xls"
+    file_name = r"D:\PycharmProjects\ciliku\util\handle_excel\exceldata\cili.xls"
     sheet_id = 0
 
     gdfe = GeTDataFromExcel(file_name=file_name,sheet_id=sheet_id)

@@ -32,6 +32,41 @@ class GetData:
         cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
         return cell_content
                 
+    def get_excel_4(self,row):
+        col = 4  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
+    def get_excel_5(self,row):
+        col = 5  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
+    def get_excel_6(self,row):
+        col = 6  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
+    def get_excel_7(self,row):
+        col = 7  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
+    def get_excel_8(self,row):
+        col = 8  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
+    def get_excel_9(self,row):
+        col = 9  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
+    def get_excel_10(self,row):
+        col = 10  
+        cell_content = self.opera_excel.get_cell_value(row, col)   #获取指定单元格的内容
+        return cell_content
+                
 
 if __name__ == '__main__':
 
